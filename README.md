@@ -16,7 +16,7 @@ I chose a highly optimized, raw stack to keep execution fast and animation state
 
 ---
 
-## 🛠️ The Vibe Coding & Engineering Narrative (For Recruiters)
+## 🛠️ The Vibe Coding & Engineering
 
 StageGo is a case study in **vibe coding**: starting with a visual design aesthetic and rapidly translating it into concrete, production-ready system architecture. By focusing on design fidelity first, I worked backwards to engineer the core backend constraints.
 
