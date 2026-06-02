@@ -1,0 +1,39 @@
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+bin/
+lib/
+include/
+
+# Python Cache & Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Operating System Metadata
+.DS_Store
+Thumbs.db
+
+# SQLite Database & Runtime Logs
+events.db
+instance/
+*.log
+
+# Editor & IDE configurations
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Local Workspace Brain Logs
+.gemini/
+brain/
+
+# Local Project Documentation
+docs/

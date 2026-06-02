@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StageGo | Discover Live Music Events Near You</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover the next generation of live music events. StageGo brings you closer to warm electronic sessions, indie rock showcases, and late-night jazz. Join the movement.">
+    <meta name="keywords" content="live music, concert discovery, synthwave, techno, indie rock, late night jazz, local events, music discovery webapp">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient Glowing Orbs in the background -->
+    <div class="ambient-glow orb-1" id="orb-1"></div>
+    <div class="ambient-glow orb-2" id="orb-2"></div>
+    <div class="cyber-grid"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" id="nav-logo">
+                STAGE<span class="red-text">GO</span><span class="pulsing-dot"></span>
+            </a>
+            
+            <nav class="nav-links" id="nav-links">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#events-section" class="nav-link">Discover</a>
+                <a href="#" class="nav-link" id="nav-create-event-link">Create Event</a>
+                <a href="#profile-section" class="nav-link hidden" id="nav-profile-link">Profile</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Guest View (shown by default) -->
+                <div id="auth-guest-links" style="display: flex; gap: 16px; align-items: center;">
+                    <button class="btn btn-secondary nav-login-btn" id="nav-login-btn">
+                        <span>Login</span>
+                    </button>
+                    <button class="btn btn-primary nav-signup-btn" id="nav-signup-btn">
+                        <span>Sign Up</span>
+                    </button>
+                </div>
+                
+                <!-- Logged In User View (hidden by default) -->
+                <div id="auth-user-panel" class="hidden" style="display: flex; gap: 20px; align-items: center;">
+                    <span class="user-greeting" id="user-greeting-text"></span>
+                    <button class="btn btn-primary nav-logout-btn" id="nav-logout-btn">
+                        <span>Log Out</span>
+                    </button>
+                </div>
+
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <nav class="mobile-nav-links">
+            <a href="#hero" class="mobile-nav-link">Home</a>
+            <a href="#events-section" class="mobile-nav-link">Discover</a>
+            <a href="#" class="mobile-nav-link" id="mobile-create-event-link">Create Event</a>
+            <a href="#profile-section" class="mobile-nav-link hidden" id="mobile-profile-link">Profile</a>
+        </nav>
+        <!-- Mobile Drawer Guest & User Views -->
+        <div class="mobile-drawer-actions" style="margin-top: auto; width: 100%;">
+            <!-- Mobile Guest Actions -->
+            <div id="mobile-auth-guest-links" style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+                <button class="btn btn-secondary mobile-drawer-btn" id="mobile-login-btn">
+                    <span>Login</span>
+                </button>
+                <button class="btn btn-primary mobile-drawer-btn" id="mobile-signup-btn">
+                    <span>Sign Up</span>
+                </button>
+            </div>
+            
+            <!-- Mobile User Actions -->
+            <div id="mobile-auth-user-panel" class="hidden" style="display: flex; flex-direction: column; gap: 14px; width: 100%; align-items: center;">
+                <span class="user-greeting" id="mobile-user-greeting-text"></span>
+                <button class="btn btn-primary mobile-drawer-btn" id="mobile-logout-btn" style="width: 100%;">
+                    <span>Log Out</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main>
+        <div id="home-view">
+        
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-content centered">
+                <h1 class="hero-heading">
+                    Discover <span class="glow-text">Music Events</span><br>
+                    Near You
+                </h1>
+                <p class="hero-description">
+                    Find concerts, raves, showcases and underground sessions happening in your city — from headliners to the acts you haven't heard yet.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-lg" id="join-movement-btn">
+                        <span>Join the movement</span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </button>
+                </div>
+                
+                <!-- Symmetrical Horizontal Soundwave Component -->
+                <div class="hero-soundwave-wrapper">
+                    <div class="soundwave-container large" id="soundwave">
+                        <!-- Group 1 -->
+                        <span class="soundwave-bar eq-g1-1"></span>
+                        <span class="soundwave-bar eq-g1-2"></span>
+                        <span class="soundwave-bar eq-g1-3"></span>
+                        <span class="soundwave-bar eq-g1-4"></span>
+                        <span class="soundwave-bar eq-g1-5"></span>
+                        <span class="soundwave-bar eq-g1-6"></span>
+                        <span class="soundwave-bar eq-g1-7"></span>
+                        <span class="soundwave-bar eq-g1-8"></span>
+                        <span class="soundwave-bar eq-g1-9"></span>
+                        
+                        <!-- Group 2 -->
+                        <span class="soundwave-bar eq-g2-1"></span>
+                        <span class="soundwave-bar eq-g2-2"></span>
+                        <span class="soundwave-bar eq-g2-3"></span>
+                        <span class="soundwave-bar eq-g2-4"></span>
+                        <span class="soundwave-bar eq-g2-5"></span>
+                        <span class="soundwave-bar eq-g2-6"></span>
+                        <span class="soundwave-bar eq-g2-7"></span>
+                        <span class="soundwave-bar eq-g2-8"></span>
+                        <span class="soundwave-bar eq-g2-9"></span>
+                        
+                        <!-- Group 3 -->
+                        <span class="soundwave-bar eq-g3-1"></span>
+                        <span class="soundwave-bar eq-g3-2"></span>
+                        <span class="soundwave-bar eq-g3-3"></span>
+                        <span class="soundwave-bar eq-g3-4"></span>
+                        <span class="soundwave-bar eq-g3-5"></span>
+                        <span class="soundwave-bar eq-g3-6"></span>
+                        <span class="soundwave-bar eq-g3-7"></span>
+                        <span class="soundwave-bar eq-g3-8"></span>
+                        <span class="soundwave-bar eq-g3-9"></span>
+                        
+                        <!-- Group 4 -->
+                        <span class="soundwave-bar eq-g4-1"></span>
+                        <span class="soundwave-bar eq-g4-2"></span>
+                        <span class="soundwave-bar eq-g4-3"></span>
+                        <span class="soundwave-bar eq-g4-4"></span>
+                        <span class="soundwave-bar eq-g4-5"></span>
+                        <span class="soundwave-bar eq-g4-6"></span>
+                        <span class="soundwave-bar eq-g4-7"></span>
+                        <span class="soundwave-bar eq-g4-8"></span>
+                        <span class="soundwave-bar eq-g4-9"></span>
+                    </div>
+                    <div class="soundwave-status">LIVE &middot; RIGHT NOW</div>
+                </div>
+            </div>
+            
+            <a href="#events-section" class="scroll-indicator" aria-label="Scroll Down">
+                <span class="scroll-text">SCROLL TO EXPLORE</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- Events Section -->
+        <section class="events-section" id="events-section">
+            <div class="section-container">
+                
+                <!-- Section Header with Search & Filters -->
+                <div class="section-header">
+                    <div class="section-titles">
+                        <div class="tech-tag">LINEUP EXPLORER</div>
+                        <h2 class="section-title">Upcoming Shows</h2>
+                    </div>
+                    
+                    <div class="search-and-stats">
+                        <div class="results-badge" id="results-count">
+                            <span class="count-value">4</span> <span class="count-label">EVENTS FOUND</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Filters Pill Bar -->
+                <div class="filter-bar">
+                    <div class="filter-pills-container" id="filter-container">
+                        <button class="filter-pill active" data-category="all">
+                            <i class="fa-solid fa-globe"></i>
+                            <span>All Shows</span>
+                        </button>
+                        <button class="filter-pill" data-category="electronic">
+                            <i class="fa-solid fa-wave-square"></i>
+                            <span>Electronic</span>
+                        </button>
+                        <button class="filter-pill" data-category="synthwave">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>Synthwave</span>
+                        </button>
+                        <button class="filter-pill" data-category="rock">
+                            <i class="fa-solid fa-guitar"></i>
+                            <span>Indie Rock</span>
+                        </button>
+                        <button class="filter-pill" data-category="jazz">
+                            <i class="fa-solid fa-music"></i>
+                            <span>Jazz</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Event Listings Container -->
+                <div class="events-list" id="events-list">
+                    <!-- Events will be dynamically generated by JS for seamless state filtering -->
+                    <!-- In case JS is slow, standard template outlines will instantly hydrate -->
+                </div>
+                
+                <!-- Empty State -->
+                <div class="empty-state hidden" id="empty-state">
+                    <i class="fa-solid fa-circle-exclamation empty-icon"></i>
+                    <h3>No shows matching your search</h3>
+                    <p>Try resetting the category filter or searching for another keyword.</p>
+                    <button class="btn btn-secondary" id="reset-filters-btn">Reset Filters</button>
+                </div>
+
+            </div>
+        </section>
+        </div>
+
+        <!-- Profile Section View (Standalone screen SPA container) -->
+        <div id="profile-view" class="hidden">
+        <section class="events-section profile-section" id="profile-section" style="padding-top: 20px;">
+            <div class="section-header centered" style="margin-bottom: 24px;">
+                <div class="tech-tag" style="margin-bottom: 8px;"><i class="fa-solid fa-user-gear"></i> USER SPACE</div>
+                <h2 class="section-title">My Music Space</h2>
+            </div>
+            
+            <div class="events-container" style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column;">
+                <!-- Back Button -->
+                <button class="btn btn-secondary" onclick="showView('home')" style="align-self: flex-start; margin-bottom: 24px; display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 0.5px;">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Back to Discover</span>
+                </button>
+                <!-- Profile Identity Card -->
+                <div class="profile-header-card" style="background: var(--bg-card); border: 1px solid var(--border-glass); padding: 24px; border-radius: 16px; display: flex; align-items: center; gap: 20px; margin-bottom: 32px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+                    <div class="profile-avatar" style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,62,85,0.08); border: 1px solid var(--border-neon-red); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary); text-shadow: 0 0 10px rgba(255,62,85,0.4);">
+                        <i class="fa-solid fa-compact-disc fa-spin" style="animation-duration: 4s;"></i>
+                    </div>
+                    <div class="profile-meta-info" style="display: flex; flex-direction: column; gap: 4px;">
+                        <span class="user-greeting" id="profile-username-tag" style="align-self: flex-start; background: rgba(6, 182, 212, 0.08); border-color: rgba(6, 182, 212, 0.25); color: var(--accent-cyan); text-shadow: 0 0 10px rgba(6,182,212,0.2);">EXPLORER</span>
+                        <span id="profile-email-sub" style="font-family: var(--font-tech); font-size: 0.8rem; color: var(--text-muted); padding-left: 4px;">listener@stagego.com</span>
+                    </div>
+                </div>
+
+                <!-- Sub-tabs selection -->
+                <div class="profile-tabs" style="display: flex; gap: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border-glass); padding-bottom: 12px;">
+                    <button class="btn btn-secondary active" id="tab-saved-btn" onclick="switchProfileTab('saved')" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 0.5px;">
+                        <i class="fa-solid fa-heart" style="color: var(--primary);"></i>
+                        <span>Interested Shows</span>
+                    </button>
+                    <button class="btn btn-secondary" id="tab-created-btn" onclick="switchProfileTab('created')" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 0.5px;">
+                        <i class="fa-solid fa-guitar"></i>
+                        <span>My Listed Events</span>
+                    </button>
+                </div>
+
+                <!-- Grid layout of lists -->
+                <div class="profile-content-area">
+                    <div class="events-list" id="profile-saved-grid">
+                        <!-- Intersted cards list -->
+                    </div>
+                    <div class="events-list hidden" id="profile-created-grid">
+                        <!-- Created cards list -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    STAGE<span class="red-text">GO</span><span class="pulsing-dot"></span>
+                </a>
+                <p class="footer-tagline">
+                    Your ultimate directory for underground live music events and acoustic experiences.
+                </p>
+                <div class="footer-socials">
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-col">
+                    <span class="col-title">EXPLORE</span>
+                    <a href="#hero" class="footer-link">Home</a>
+                    <a href="#events-section" class="footer-link">Concerts</a>
+                    <a href="#" class="footer-link">Arenas</a>
+                    <a href="#" class="footer-link">VIP Passes</a>
+                </div>
+                <div class="footer-col">
+                    <span class="col-title">ABOUT</span>
+                    <a href="#" class="footer-link">Our Story</a>
+                    <a href="#" class="footer-link">Brand Assets</a>
+                    <a href="#" class="footer-link">Sound Systems</a>
+                    <a href="#" class="footer-link">Partners</a>
+                </div>
+            </div>
+
+            <div class="footer-newsletter">
+                <span class="col-title">NEWSLETTER</span>
+                <p>Subscribe to receive exclusive access and updates for secret warehouse events.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Newsletter subscription successful!');">
+                    <input type="email" placeholder="Enter your email..." required class="newsletter-input" aria-label="Newsletter email">
+                    <button type="submit" class="btn btn-primary newsletter-btn" aria-label="Subscribe">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span class="footer-copyright">&copy; 2026 STAGEGO. ALL RIGHTS RESERVED.</span>
+        </div>
+    </footer>
+
+    <!-- Event Details Modal -->
+    <div class="modal-backdrop hidden" id="details-modal">
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-content" id="modal-content-area">
+                <!-- Dynamically populated via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Event Modal -->
+    <div class="modal-backdrop hidden" id="create-event-modal">
+        <div class="modal-container modal-medium">
+            <button class="modal-close" id="create-modal-close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-header-group" style="margin-bottom: 20px;">
+                <div class="tech-tag" id="create-modal-tag" style="margin-bottom: 6px;"><i class="fa-solid fa-calendar-plus"></i> EVENT GENERATOR</div>
+                <h2 class="modal-title" id="create-modal-title">Create Music Event</h2>
+            </div>
+            <form class="create-event-form" id="create-event-form">
+                <!-- Inline Alert Banner -->
+                <div class="modal-alert-banner hidden" id="create-alert-banner"></div>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="event-title">EVENT NAME / TITLE</label>
+                        <input type="text" id="event-title" placeholder="e.g. Cyberpunk Rave: Neon Awakening">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="event-category">GENRE / CATEGORY</label>
+                        <select id="event-category">
+                            <option value="electronic">Electronic</option>
+                            <option value="synthwave">Synthwave</option>
+                            <option value="rock">Indie Rock</option>
+                            <option value="jazz">Jazz</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-date">DATE</label>
+                        <input type="text" id="event-date" placeholder="e.g. June 15, 2026">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-time">TIME WINDOW</label>
+                        <input type="text" id="event-time" placeholder="e.g. 21:00 - 03:00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-venue">VENUE / HALL</label>
+                        <input type="text" id="event-venue" placeholder="e.g. Nexus Club Sector 9">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-location">CITY REGION / SECTOR</label>
+                        <input type="text" id="event-location" placeholder="e.g. Neo-Tokyo Sector 5">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>COVER IMAGE</label>
+                        <div class="image-upload-wrapper" id="image-upload-zone">
+                            <input type="file" id="event-image-file" accept="image/*" class="file-input-hidden">
+                            <div class="upload-placeholder" id="upload-placeholder">
+                                <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                                <span>Upload Concert Cover</span>
+                                <span class="upload-subtext">Click to choose image file</span>
+                            </div>
+                            <img src="" alt="Preview" class="upload-preview hidden" id="upload-preview">
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width" style="margin-top: 4px;">
+                        <label for="event-description">CONCERT DESCRIPTION</label>
+                        <textarea id="event-description" rows="3" placeholder="Describe the sonic elements, visual performance setup, and experience vibes..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions" style="margin-top: 20px;">
+                    <button type="submit" class="btn btn-primary form-submit-btn" id="create-form-submit-btn">
+                        <span>Create Live Event</span>
+                        <i class="fa-solid fa-square-plus"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal-backdrop hidden" id="signup-modal">
+        <div class="modal-container modal-small">
+            <button class="modal-close" id="signup-modal-close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-header-group" style="margin-bottom: 20px;">
+                <div class="tech-tag" style="margin-bottom: 6px;"><i class="fa-solid fa-user-plus"></i> JOIN STAGEGO</div>
+                <h2 class="modal-title">Create Your Account</h2>
+            </div>
+            <form class="create-event-form" id="signup-form" style="gap: 16px;">
+                <!-- Inline Alert Banner -->
+                <div class="modal-alert-banner hidden" id="signup-alert-banner"></div>
+                <div class="form-group">
+                    <label for="signup-username">USERNAME</label>
+                    <input type="text" id="signup-username" placeholder="e.g. music_lover">
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">EMAIL ADDRESS</label>
+                    <input type="text" id="signup-email" placeholder="e.g. listener@stagego.com">
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">PASSWORD</label>
+                    <input type="password" id="signup-password" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary form-submit-btn" style="margin-top: 10px; width: 100%;">
+                    <span>Sign Up</span>
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                </button>
+                <div class="auth-redirect">
+                    Already have an account? <a href="#" id="to-signin-link">Log In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign In (Login) Modal -->
+    <div class="modal-backdrop hidden" id="signin-modal">
+        <div class="modal-container modal-small">
+            <button class="modal-close" id="signin-modal-close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-header-group" style="margin-bottom: 20px;">
+                <div class="tech-tag" style="margin-bottom: 6px;"><i class="fa-solid fa-key"></i> MEMBER SIGN IN</div>
+                <h2 class="modal-title">Welcome Back</h2>
+            </div>
+            <form class="create-event-form" id="signin-form" style="gap: 16px;">
+                <!-- Inline Alert Banner -->
+                <div class="modal-alert-banner hidden" id="signin-alert-banner"></div>
+                <div class="form-group">
+                    <label for="signin-email">USERNAME OR EMAIL ADDRESS</label>
+                    <input type="text" id="signin-email" placeholder="e.g. user or listener@stagego.com">
+                </div>
+                <div class="form-group">
+                    <label for="signin-password">PASSWORD</label>
+                    <input type="password" id="signin-password" placeholder="••••••••">
+                </div>
+                <div style="font-family: var(--font-tech); font-size: 0.7rem; color: var(--accent-cyan); text-align: center; border: 1px solid rgba(6, 182, 212, 0.2); background: rgba(6, 182, 212, 0.03); padding: 8px; border-radius: 6px; margin: 4px 0;">
+                    <i class="fa-solid fa-circle-info" style="margin-right: 4px;"></i> Testing Codenames: <strong>user</strong> / <strong>password</strong>
+                </div>
+                <button type="submit" class="btn btn-primary form-submit-btn" style="margin-top: 6px; width: 100%;">
+                    <span>Log In</span>
+                    <i class="fa-solid fa-key"></i>
+                </button>
+                <div class="auth-redirect">
+                    New to StageGo? <a href="#" id="to-signup-link">Create Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- StageGo Custom Micro Alert Modal -->
+    <div class="alert-backdrop hidden" id="custom-alert-modal">
+        <div class="alert-container">
+            <div class="alert-icon" id="custom-alert-icon">
+                <i class="fa-solid fa-circle-info"></i>
+            </div>
+            <div class="alert-content">
+                <h3 class="alert-title" id="custom-alert-title">StageGo</h3>
+                <p class="alert-message" id="custom-alert-message">Notification message goes here...</p>
+            </div>
+            <button class="btn btn-secondary alert-btn" id="custom-alert-ok-btn">
+                <span>Got it</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- App JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
