@@ -327,7 +327,7 @@
             <div class="footer-newsletter">
                 <span class="col-title">NEWSLETTER</span>
                 <p>Subscribe to receive exclusive access and updates for secret warehouse events.</p>
-                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Newsletter subscription successful!');">
+                <form class="newsletter-form" onsubmit="event.preventDefault(); showCustomAlert('Subscribed', 'Newsletter subscription successful!', 'success');">
                     <input type="email" placeholder="Enter your email..." required class="newsletter-input" aria-label="Newsletter email">
                     <button type="submit" class="btn btn-primary newsletter-btn" aria-label="Subscribe">
                         <i class="fa-solid fa-paper-plane"></i>

@@ -1259,9 +1259,10 @@ async function syncAuthUI() {
 function logout() {
     currentUser = null;
     sessionStorage.removeItem("currentUser");
+    showView('home');
     syncAuthUI();
     renderEvents(); // Re-render cards list
-    alert("Signed out successfully! Returning to guest view.");
+    showCustomAlert("Signed Out", "Signed out successfully! Returning to guest view.", "success");
 }
 
 // --- Event Management Functions ---
@@ -1351,7 +1352,7 @@ function cancelDeleteEvent(eventId) {
 
 async function executeDeleteEvent(eventId) {
     if (!currentUser) {
-        alert("Unauthorized access session.");
+        showCustomAlert("Unauthorized", "Unauthorized access session.", "error");
         return;
     }
     try {
@@ -1368,11 +1369,11 @@ async function executeDeleteEvent(eventId) {
             triggerFilterTransitions();
         } else {
             const err = await response.json();
-            alert(`Error: ${err.error || 'Failed to delete event'}`);
+            showCustomAlert("Error", `Error: ${err.error || 'Failed to delete event'}`, "error");
         }
     } catch (err) {
         console.error("DELETE request error:", err);
-        alert("Network error: Failed to reach backend server.");
+        showCustomAlert("Error", "Network error: Failed to reach backend server.", "error");
     }
 }
 
