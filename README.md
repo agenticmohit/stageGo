@@ -1,5 +1,7 @@
 # 🌌 StageGo | The Music Discovery Portal
 
+**🔗 Live Web App**: [stagego.up.railway.app](https://stagego.up.railway.app/)
+
 StageGo is a premium, single-page music discovery web app engineered for synthwave, electronic, indie rock, and jazz cultures. Built with a focus on immersive aesthetics—featuring heavy glassmorphism, glowing custom neon borders, and micro-interactions—StageGo marries a lightweight pythonic REST API with a pure, high-performance vanilla frontend.
 
 ---
@@ -59,6 +61,8 @@ To instantly test full creator flows and bookmarking actions, use the default se
 ---
 
 ## ☁️ Deployment
+
+StageGo is deployed and accessible live at: **[stagego.up.railway.app](https://stagego.up.railway.app/)**
 
 StageGo is fully pre-configured for deployment on cloud platforms like **Railway**:
 * **Procfile**: Tells the builder to spin up a production-grade Gunicorn server automatically (`web: gunicorn app:app`).
